@@ -9,7 +9,6 @@ export const Nav = () => {
       <Link href="/ssr">SSR</Link>
       <Link href="/stream">STREAM</Link>
       <Link href="/pre-render">PRE-RENDER</Link>
-      <Link href="/sample">SAMPLE</Link>
     </nav>
   )
 }
