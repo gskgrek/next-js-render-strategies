@@ -1,16 +1,26 @@
-import styles from 'layout.module.css'
+import { auth } from '@/auth'
+import { SignOut } from '@/components/auth/SignOut'
 
-export default function AuthLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+interface AuthLayoutProps {
+  readonly children: React.ReactNode
+}
+
+const AuthLayout = async ({ children }: AuthLayoutProps) => {
+  const session = await auth()
+
   return (
     <div>
       <header>
-        USER NAME
+        {session?.user ? (
+          <>
+            {session?.user.name}
+            <SignOut />
+          </>
+        ) : 'Login below'}
       </header>
       {children}
     </div>
   );
 }
+
+export default AuthLayout
