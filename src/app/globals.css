@@ -29,6 +29,13 @@ aside {
 
 main {
   padding: 16px;
+  flex: 1;
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 a {
