@@ -16,21 +16,40 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build result
+<pre>
+Route (app)                              Size     First Load JS
+┌ ○ /                                    146 B          87.2 kB
+├ ○ /_not-found                          871 B          87.9 kB
+├ ƒ /api/auth/[...nextauth]              0 B                0 B
+├ ○ /auth                                407 B          91.3 kB
+├ ○ /auth/dashboard                      146 B          87.2 kB
+├ ○ /isr                                 191 B            94 kB
+├ ● /isr/[id]                            191 B            94 kB
+├   ├ /isr/1
+├   ├ /isr/2
+├   ├ /isr/3
+├   └ [+2 more paths]
+├ ○ /pre-render                          146 B          87.2 kB
+├ ○ /ssg                                 191 B            94 kB
+├ ● /ssg/[id]                            191 B            94 kB
+├   ├ /ssg/1
+├   ├ /ssg/2
+├   ├ /ssg/3
+├   └ [+7 more paths]
+├ ○ /ssr                                 191 B            94 kB
+├ ƒ /ssr/[id]                            191 B            94 kB
+├ ○ /stream                              191 B            94 kB
+└ ƒ /stream/[id]                         191 B            94 kB
++ First Load JS shared by all            87.1 kB
+  ├ chunks/23-e4901e44779ad62f.js        31.5 kB
+  ├ chunks/fd9d1056-62aaf4b921c84028.js  53.6 kB
+  └ other shared chunks (total)          1.92 kB
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+ƒ Middleware                             73.9 kB
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses getStaticProps)
+ƒ  (Dynamic)  server-rendered on demand
+</pre>

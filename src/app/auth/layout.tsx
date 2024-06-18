@@ -1,25 +1,17 @@
-import { auth } from '@/auth'
-import { SignOut } from '@/components/auth/SignOut'
+import { Header } from '@/components/auth/Header'
+import AuthProvider from '@/components/auth/AuthProvider'
 
 interface AuthLayoutProps {
   readonly children: React.ReactNode
 }
 
-const AuthLayout = async ({ children }: AuthLayoutProps) => {
-  const session = await auth()
+const AuthLayout = ({ children }: AuthLayoutProps) => {
 
   return (
-    <div>
-      <header>
-        {session?.user ? (
-          <>
-            {session?.user.name}
-            <SignOut />
-          </>
-        ) : 'Login below'}
-      </header>
+    <AuthProvider>
+      <Header />
       {children}
-    </div>
+    </AuthProvider>
   );
 }
 

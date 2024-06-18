@@ -1,6 +1,7 @@
-import NextAuth, { type DefaultSession } from 'next-auth'
+import NextAuth, { CredentialsSignin , type DefaultSession } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { User } from './models/User'
+import { getUserSlow } from './api/api'
 
 declare module "next-auth" {
   /**
@@ -16,7 +17,15 @@ declare module "next-auth" {
     user: User & DefaultSession["user"]
   }
 }
- 
+
+class CustomError extends CredentialsSignin {
+  code = "INVALID_CREDENTIALS"
+  constructor(message?: string, errorOptions?: any) {
+    super(message, errorOptions)
+    this.message = message || ''
+  }
+}
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   session: { strategy: 'jwt' },
   providers: [
@@ -30,14 +39,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       // @ts-ignore
       authorize: async (credentials, request) => {
         if (credentials.username === 'user@test.com' && credentials.password === 'admin123') {
-          const user: User = {
-            id: 1,
-            name: 'First User',
-          }
-
+          const user: User = await getUserSlow(1)
           return user
         } else {
-          throw new Error('Invalid credentials')
+          // Custom errors not working for now: https://github.com/nextauthjs/next-auth/pull/9871
+          throw new CustomError('Invalid credentials')
         }
       }
     }),

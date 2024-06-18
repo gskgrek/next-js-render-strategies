@@ -19,6 +19,13 @@ export const getUser = async (id: User['id']) => {
   return data
 }
 
+export const getUserSlow = async (id: User['id']) => {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+  const data = await response.json()
+  await sleep(5000)
+  return data
+}
+
 export const getPosts = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
   const data = await response.json()
