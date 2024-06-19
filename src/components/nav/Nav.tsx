@@ -10,6 +10,7 @@ export const Nav = () => {
       <Link href="/stream">STREAM</Link>
       <Link href="/pre-render">PRE-RENDER</Link>
       <Link href="/auth">AUTH</Link>
+      <Link href="/auth/dashboard">DASHBOARD</Link>
     </nav>
   )
 }
