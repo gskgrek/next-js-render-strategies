@@ -25,7 +25,7 @@ export const AlbumItem = ({ album, id }: AlbumProps) => {
     <div>
       {albumData.id}: {albumData.title}
       <div>
-        <Link href={`/stream/${albumData.id}`}>view</Link>
+        <Link href={`/stream-tanstack/${albumData.id}`}>view</Link>
       </div>
     </div>
   )
