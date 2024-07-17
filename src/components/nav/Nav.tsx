@@ -8,6 +8,7 @@ export const Nav = () => {
       <Link href="/isr">ISR</Link>
       <Link href="/ssr">SSR</Link>
       <Link href="/stream">STREAM</Link>
+      <Link href="/stream-tanstack">STREAM TANSTACK</Link>
       <Link href="/pre-render">PRE-RENDER</Link>
       <Link href="/auth">AUTH</Link>
       <Link href="/auth/dashboard">DASHBOARD</Link>

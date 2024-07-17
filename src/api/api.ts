@@ -6,6 +6,7 @@ import { Album } from "@/models/Album"
 const sleep = (ms?: number) => new Promise((r) => setTimeout(r, ms || Math.random() * 4000))
 
 export const getUsers = async () => {
+  console.log('getUsers')
   const response = await fetch('https://jsonplaceholder.typicode.com/users')
   const data = await response.json()
   await sleep()
@@ -13,6 +14,7 @@ export const getUsers = async () => {
 }
 
 export const getUser = async (id: User['id']) => {
+  console.log('getUser', id)
   const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
   const data = await response.json()
   await sleep()
@@ -20,6 +22,7 @@ export const getUser = async (id: User['id']) => {
 }
 
 export const getUserSlow = async (id: User['id']) => {
+  console.log('getUserSlow', id)
   const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
   const data = await response.json()
   await sleep(5000)
@@ -27,6 +30,7 @@ export const getUserSlow = async (id: User['id']) => {
 }
 
 export const getPosts = async () => {
+  console.log('getPosts')
   const response = await fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
   const data = await response.json()
   await sleep()
@@ -34,6 +38,7 @@ export const getPosts = async () => {
 }
 
 export const getPost = async (id: Post['id']) => {
+  console.log('getPost', id)
   const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
   const data = await response.json()
   await sleep()
@@ -41,6 +46,7 @@ export const getPost = async (id: Post['id']) => {
 }
 
 export const getComments = async () => {
+  console.log('getComments')
   const response = await fetch('https://jsonplaceholder.typicode.com/comments?postId=1', { next: { revalidate: 30 } })
   const data = await response.json()
   await sleep()
@@ -48,6 +54,7 @@ export const getComments = async () => {
 }
 
 export const getComment = async (id: Comment['id']) => {
+  console.log('getComment', id)
   const response = await fetch(`https://jsonplaceholder.typicode.com/comments/${id}`, { next: { revalidate: 30 } })
   const data = await response.json()
   await sleep()
@@ -55,6 +62,7 @@ export const getComment = async (id: Comment['id']) => {
 }
 
 export const getAlbums = async () => {
+  console.log('getAlbums')
   const response = await fetch('https://jsonplaceholder.typicode.com/albums?userId=1')
   const data = await response.json()
   await sleep()
@@ -62,6 +70,7 @@ export const getAlbums = async () => {
 }
 
 export const getAlbum = async (id: Album['id']) => {
+  console.log('getAlbum', id)
   const response = await fetch(`https://jsonplaceholder.typicode.com/albums/${id}`)
   const data = await response.json()
   await sleep()
